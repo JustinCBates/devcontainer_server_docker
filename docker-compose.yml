@@ -2,7 +2,7 @@ services:
   # Ubuntu 22.04 VPS
   ubuntu-vps:
     build: 
-      context: ./distros/ubuntu
+      context: ./project/distros/ubuntu
     container_name: ubuntu-vps
     hostname: ubuntu-vps
     privileged: true
@@ -15,8 +15,8 @@ services:
       - "5001:5000"    # Python apps
     volumes:
       - ubuntu-data:/var/lib/docker
-      - ./shared:/home/vpsuser/shared
-      - ./deployments:/home/vpsuser/deployments
+      - ./project/shared:/home/vpsuser/shared
+      - ./project/deployments:/home/vpsuser/deployments
     networks:
       vps-network:
         ipv4_address: 172.20.0.10
@@ -28,7 +28,7 @@ services:
   # Debian 12 VPS
   debian-vps:
     build: 
-      context: ./distros/debian
+      context: ./project/distros/debian
     container_name: debian-vps
     hostname: debian-vps
     privileged: true
@@ -41,8 +41,8 @@ services:
       - "5002:5000"    # Python apps
     volumes:
       - debian-data:/var/lib/docker
-      - ./shared:/home/vpsuser/shared
-      - ./deployments:/home/vpsuser/deployments
+      - ./project/shared:/home/vpsuser/shared
+      - ./project/deployments:/home/vpsuser/deployments
     networks:
       vps-network:
         ipv4_address: 172.20.0.20
@@ -54,7 +54,7 @@ services:
   # Rocky Linux 9 VPS
   rocky-vps:
     build: 
-      context: ./distros/rocky
+      context: ./project/distros/rocky
     container_name: rocky-vps
     hostname: rocky-vps
     privileged: true
@@ -67,8 +67,8 @@ services:
       - "5003:5000"    # Python apps
     volumes:
       - rocky-data:/var/lib/docker
-      - ./shared:/home/vpsuser/shared
-      - ./deployments:/home/vpsuser/deployments
+      - ./project/shared:/home/vpsuser/shared
+      - ./project/deployments:/home/vpsuser/deployments
     networks:
       vps-network:
         ipv4_address: 172.20.0.30
@@ -80,7 +80,7 @@ services:
   # CentOS Stream 9 VPS
   centos-vps:
     build: 
-      context: ./distros/centos
+      context: ./project/distros/centos
     container_name: centos-vps
     hostname: centos-vps
     privileged: true
@@ -93,8 +93,8 @@ services:
       - "5004:5000"    # Python apps
     volumes:
       - centos-data:/var/lib/docker
-      - ./shared:/home/vpsuser/shared
-      - ./deployments:/home/vpsuser/deployments
+      - ./project/shared:/home/vpsuser/shared
+      - ./project/deployments:/home/vpsuser/deployments
     networks:
       vps-network:
         ipv4_address: 172.20.0.40
@@ -106,7 +106,7 @@ services:
   # Alpine Linux VPS (Lightweight)
   alpine-vps:
     build: 
-      context: ./distros/alpine
+      context: ./project/distros/alpine
     container_name: alpine-vps
     hostname: alpine-vps
     privileged: true
@@ -119,8 +119,8 @@ services:
       - "5005:5000"    # Python apps
     volumes:
       - alpine-data:/var/lib/docker
-      - ./shared:/home/vpsuser/shared
-      - ./deployments:/home/vpsuser/deployments
+      - ./project/shared:/home/vpsuser/shared
+      - ./project/deployments:/home/vpsuser/deployments
     networks:
       vps-network:
         ipv4_address: 172.20.0.50
@@ -132,7 +132,7 @@ services:
   # openSUSE Leap VPS
   suse-vps:
     build: 
-      context: ./distros/suse
+      context: ./project/distros/suse
     container_name: suse-vps
     hostname: suse-vps
     privileged: true
@@ -145,8 +145,8 @@ services:
       - "5006:5000"    # Python apps
     volumes:
       - suse-data:/var/lib/docker
-      - ./shared:/home/vpsuser/shared
-      - ./deployments:/home/vpsuser/deployments
+      - ./project/shared:/home/vpsuser/shared
+      - ./project/deployments:/home/vpsuser/deployments
     networks:
       vps-network:
         ipv4_address: 172.20.0.60
@@ -158,7 +158,7 @@ services:
   # Arch Linux VPS
   arch-vps:
     build: 
-      context: ./distros/arch
+      context: ./project/distros/arch
     container_name: arch-vps
     hostname: arch-vps
     privileged: true
@@ -171,8 +171,8 @@ services:
       - "5007:5000"    # Python apps
     volumes:
       - arch-data:/var/lib/docker
-      - ./shared:/home/vpsuser/shared
-      - ./deployments:/home/vpsuser/deployments
+      - ./project/shared:/home/vpsuser/shared
+      - ./project/deployments:/home/vpsuser/deployments
     networks:
       vps-network:
         ipv4_address: 172.20.0.70
@@ -184,7 +184,7 @@ services:
   # Slackware Linux VPS
   slackware-vps:
     build: 
-      context: ./distros/slackware
+      context: ./project/distros/slackware
     container_name: slackware-vps
     hostname: slackware-vps
     privileged: true
@@ -197,8 +197,8 @@ services:
       - "5008:5000"    # Python apps
     volumes:
       - slackware-data:/var/lib/docker
-      - ./shared:/home/vpsuser/shared
-      - ./deployments:/home/vpsuser/deployments
+      - ./project/shared:/home/vpsuser/shared
+      - ./project/deployments:/home/vpsuser/deployments
     networks:
       vps-network:
         ipv4_address: 172.20.0.80

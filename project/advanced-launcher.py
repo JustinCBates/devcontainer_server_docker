@@ -291,15 +291,15 @@ def start_persistent_container(distro_key: str, volume_names: List[str]) -> bool
 """
     
     try:
-        with open("docker-compose.override.yml", "w") as f:
+        with open("../docker-compose.override.yml", "w") as f:
             f.write(override_content)
         
-        success, _ = run_command(f"docker-compose --profile {distro_key} up -d", capture_output=False)
+        success, _ = run_command(f"docker-compose -f ../docker-compose.yml --profile {distro_key} up -d", capture_output=False)
         return success
     finally:
         # Clean up override file
-        if os.path.exists("docker-compose.override.yml"):
-            os.remove("docker-compose.override.yml")
+        if os.path.exists("../docker-compose.override.yml"):
+            os.remove("../docker-compose.override.yml")
 
 def start_vps_environment(family_key: str, distro_key: str, mode: str, state_name: str = "", build_first: bool = False) -> bool:
     """Start VPS environment based on selected mode"""
@@ -322,13 +322,13 @@ def start_vps_environment(family_key: str, distro_key: str, mode: str, state_nam
         print()
         
         # Stop existing container
-        run_command(f"docker-compose --profile {distro_key} down")
+        run_command(f"docker-compose -f ../docker-compose.yml --profile {distro_key} down")
         
         # Start fresh (no volume mount)
         if build_first:
-            run_command(f"docker-compose build {distro['container']}")
+            run_command(f"docker-compose -f ../docker-compose.yml build {distro['container']}")
         
-        success, _ = run_command(f"docker-compose --profile {distro_key} up -d", capture_output=False)
+        success, _ = run_command(f"docker-compose -f ../docker-compose.yml --profile {distro_key} up -d", capture_output=False)
         
     elif mode == "persistent":
         print(f"{Colors.BLUE}💾 Persistent Server Mode:{Colors.RESET}")
@@ -344,11 +344,11 @@ def start_vps_environment(family_key: str, distro_key: str, mode: str, state_nam
             run_command(f"docker volume create {distro['volume']}")
         
         # Stop existing container
-        run_command(f"docker-compose --profile {distro_key} down")
+        run_command(f"docker-compose -f ../docker-compose.yml --profile {distro_key} down")
         
         # Start with persistent volume
         if build_first:
-            run_command(f"docker-compose build {distro['container']}")
+            run_command(f"docker-compose -f ../docker-compose.yml build {distro['container']}")
         
         success = start_persistent_container(distro_key, [distro["volume"]])
         
@@ -365,9 +365,9 @@ def start_vps_environment(family_key: str, distro_key: str, mode: str, state_nam
             return False
         
         # Stop container, rebuild, restart with same volume
-        run_command(f"docker-compose --profile {distro_key} down")
+        run_command(f"docker-compose -f ../docker-compose.yml --profile {distro_key} down")
         print(f"{Colors.YELLOW}Rebuilding with latest packages...{Colors.RESET}")
-        run_command(f"docker-compose build --no-cache {distro['container']}")
+        run_command(f"docker-compose -f ../docker-compose.yml build --no-cache {distro['container']}")
         
         success = start_persistent_container(distro_key, [distro["volume"]])
         
@@ -422,7 +422,7 @@ def start_vps_environment(family_key: str, distro_key: str, mode: str, state_nam
             return False
         
         # Stop container
-        run_command(f"docker-compose --profile {distro_key} down")
+        run_command(f"docker-compose -f ../docker-compose.yml --profile {distro_key} down")
         
         # Create/recreate persistent volume
         run_command(f"docker volume rm {distro['volume']}")

@@ -2,6 +2,39 @@
 
 A comprehensive Docker-based testing environment that simulates multiple Linux VPS distributions for local deployment testing. Test your applications across 8 different Linux distributions organized by family, with advanced state management capabilities.
 
+## 🚀 **START HERE** - One Script Per Platform
+
+### Windows Users (PowerShell)
+```cmd
+.\START-WINDOWS.bat
+```
+
+### Linux/macOS Users
+```bash
+./start-linux.sh
+```
+
+**That's it!** These are the ONLY two scripts you need to remember for launching the interactive VPS environment.
+
+## 📁 Clean Workspace Structure
+
+```
+Root Directory/
+├── START-WINDOWS.bat     ← Windows launcher
+├── start-linux.sh        ← Linux launcher  
+├── docker-compose.yml    ← Docker configuration
+├── README.md            ← This documentation
+└── project/             ← All other files organized here
+    ├── advanced-launcher.py
+    ├── organized-family-builder.py
+    ├── families/        ← Family-based build system
+    ├── distros/         ← Distribution Dockerfiles
+    ├── deployment-examples/
+    └── ... (build & test scripts)
+```
+
+**No more confusion!** Just 4 essential files in the root directory.
+
 ## 🎯 Purpose
 
 Perfect for developers who need to:
