@@ -3,6 +3,14 @@
         {
             "name": "🐳 VPS Testing Environment",
             "path": "."
+        },
+        {
+            "name": "🔧 WSL & Docker Manager", 
+            "path": "../../wsl-and-docker-desktop-manager"
+        },
+        {
+            "name": "🎨 TUI Form Designer", 
+            "path": "../../TUI_Form_Designer"
         }
     ],
     "settings": {
@@ -34,7 +42,7 @@
         "configurations": [
             {
                 "name": "🚀 Interactive VPS Launcher",
-                "type": "python",
+                "type": "debugpy",
                 "request": "launch",
                 "program": "${workspaceFolder}/advanced-launcher.py",
                 "console": "integratedTerminal",
@@ -43,7 +51,7 @@
             },
             {
                 "name": "🔍 VPS Status Check",
-                "type": "python",
+                "type": "debugpy",
                 "request": "launch", 
                 "program": "${workspaceFolder}/manage-vps.py",
                 "console": "integratedTerminal",

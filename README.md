@@ -2,7 +2,33 @@
 
 A comprehensive Docker-based testing environment that simulates multiple Linux VPS distributions for local deployment testing. Test your applications across 8 different Linux distributions organized by family, with advanced state management capabilities.
 
-## 🚀 **START HERE** - One Script Per Platform
+## 🔧 WSL & Docker Desktop Management
+
+**Need to reinstall or optimize Docker Desktop and WSL 2?** Check out our dedicated toolkit:
+
+**📦 [WSL & Docker Desktop Manager](../wsl-and-docker-desktop-manager/)** - Complete automation for:
+- 💾 Backing up Docker containers, images, and volumes
+- 🗑️ Safely uninstalling Docker Desktop and WSL
+- 🚀 Reinstalling WSL 2 with dynamic disk allocation (expandable storage)
+- 🐳 Reinstalling Docker Desktop with optimized WSL 2 backend
+- 📊 Windows 11 specific optimizations and monitoring tools
+
+Perfect for solving storage issues, performance problems, or when you need a clean slate for Docker and WSL!
+
+## 🎨 TUI Form Designer
+
+**Looking to create beautiful terminal user interfaces?** Check out our TUI development toolkit:
+
+**📦 [TUI Form Designer](../TUI_Form_Designer/)** - Professional TUI development platform:
+- 🖼️ Visual form designer for terminal applications
+- 🐍 Python-based framework with modern architecture  
+- 🎯 Component-based UI system
+- 📋 Form validation and data handling
+- 🚀 Cross-platform terminal applications
+
+Perfect for creating professional command-line tools and terminal-based applications!
+
+## �🚀 **START HERE** - One Script Per Platform
 
 ### Windows Users (PowerShell)
 ```cmd
