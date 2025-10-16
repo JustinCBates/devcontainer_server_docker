@@ -1,0 +1,175 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "🚀 Launch Interactive VPS Environment",
+            "type": "shell",
+            "command": "python",
+            "args": ["advanced-launcher.py"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "showReuseMessage": false,
+                "clear": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "Launch the interactive VPS environment selector"
+        },
+        {
+            "label": "🔍 Check VPS Status",
+            "type": "shell", 
+            "command": "python",
+            "args": ["manage-vps.py", "status"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "Check the status of all VPS containers"
+        },
+        {
+            "label": "🛑 Stop All VPS Containers",
+            "type": "shell",
+            "command": "python", 
+            "args": ["manage-vps.py", "stop"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "Stop all running VPS containers"
+        },
+        {
+            "label": "🧹 Quick Launch: Fresh Ubuntu",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "advanced-launcher.py",
+                "--family", "debian", 
+                "--distribution", "ubuntu",
+                "--mode", "fresh"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "showReuseMessage": false,
+                "clear": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "Quick launch a fresh Ubuntu container"
+        },
+        {
+            "label": "💾 Quick Launch: Persistent Rocky Linux",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "advanced-launcher.py",
+                "--family", "redhat",
+                "--distribution", "rocky", 
+                "--mode", "persistent"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "showReuseMessage": false,
+                "clear": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "Quick launch a persistent Rocky Linux server"
+        },
+        {
+            "label": "🐳 Build All Docker Images",
+            "type": "shell",
+            "command": "docker-compose",
+            "args": ["build"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always", 
+                "focus": true,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "Build all Docker images for VPS distributions"
+        },
+        {
+            "label": "🧼 Clean Docker Resources",
+            "type": "shell",
+            "command": "docker",
+            "args": ["system", "prune", "-f"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "Clean up unused Docker resources"
+        },
+        {
+            "label": "📚 Show Help",
+            "type": "shell",
+            "command": "python",
+            "args": ["advanced-launcher.py", "--help"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "Show advanced launcher help and options"
+        }
+    ]
+}

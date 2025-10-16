@@ -1,0 +1,107 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "🚀 Launch VPS Environment (Interactive)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/advanced-launcher.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [],
+            "justMyCode": true,
+            "stopOnEntry": false
+        },
+        {
+            "name": "🧹 Launch Fresh Ubuntu",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/advanced-launcher.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--family", "debian",
+                "--distribution", "ubuntu",
+                "--mode", "fresh"
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "💾 Launch Persistent Rocky Linux",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/advanced-launcher.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--family", "redhat",
+                "--distribution", "rocky",
+                "--mode", "persistent"
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "🔍 VPS Status Check",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage-vps.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": ["status"],
+            "justMyCode": true
+        },
+        {
+            "name": "🛑 Stop All VPS",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage-vps.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": ["stop"],
+            "justMyCode": true
+        },
+        {
+            "name": "📸 Create Ubuntu Snapshot",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/advanced-launcher.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--family", "debian",
+                "--distribution", "ubuntu",
+                "--mode", "snapshot",
+                "--state", "debug-snapshot"
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "🔄 Upgrade Alpine Linux",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/advanced-launcher.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--family", "alpine",
+                "--distribution", "alpine",
+                "--mode", "upgrade"
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "🐍 Debug Launcher (with breakpoints)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/advanced-launcher.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": ["--help"],
+            "justMyCode": false,
+            "stopOnEntry": false,
+            "debugOptions": [
+                "ShowReturnValue"
+            ]
+        }
+    ]
+}

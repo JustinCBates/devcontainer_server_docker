@@ -1,0 +1,78 @@
+{
+    "folders": [
+        {
+            "name": "🐳 VPS Testing Environment",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "python.defaultInterpreterPath": "python",
+        "python.terminal.activateEnvironment": true,
+        "files.associations": {
+            "*.py": "python",
+            "Dockerfile*": "dockerfile", 
+            "docker-compose*.yml": "dockercompose",
+            "docker-compose*.yaml": "dockercompose"
+        },
+        "workbench.colorTheme": "Default Dark+",
+        "editor.fontSize": 14,
+        "terminal.integrated.defaultProfile.windows": "PowerShell"
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "ms-python.pylint",
+            "ms-vscode.vscode-docker",
+            "redhat.vscode-yaml",
+            "ms-vscode.powershell",
+            "github.vscode-github-actions",
+            "eamodio.gitlens"
+        ]
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "🚀 Interactive VPS Launcher",
+                "type": "python",
+                "request": "launch",
+                "program": "${workspaceFolder}/advanced-launcher.py",
+                "console": "integratedTerminal",
+                "cwd": "${workspaceFolder}",
+                "justMyCode": true
+            },
+            {
+                "name": "🔍 VPS Status Check",
+                "type": "python",
+                "request": "launch", 
+                "program": "${workspaceFolder}/manage-vps.py",
+                "console": "integratedTerminal",
+                "cwd": "${workspaceFolder}",
+                "args": ["status"],
+                "justMyCode": true
+            }
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "🚀 Launch VPS Environment",
+                "type": "shell",
+                "command": "python",
+                "args": ["advanced-launcher.py"],
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": true,
+                    "panel": "new"
+                },
+                "problemMatcher": []
+            }
+        ]
+    }
+}

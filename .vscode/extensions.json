@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-python.pylint", 
+        "ms-python.flake8",
+        "ms-vscode.vscode-docker",
+        "redhat.vscode-yaml",
+        "ms-vscode.powershell",
+        "github.vscode-github-actions",
+        "eamodio.gitlens",
+        "ms-vscode.vscode-json",
+        "streetsidesoftware.code-spell-checker"
+    ]
+}
