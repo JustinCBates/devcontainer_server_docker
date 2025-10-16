@@ -28,6 +28,17 @@ Perfect for solving storage issues, performance problems, or when you need a cle
 
 Perfect for creating professional command-line tools and terminal-based applications!
 
+## 🎛️ Multi-Repository Development Workspace
+
+**Want to work with all three projects simultaneously?** Use our integrated VS Code workspace:
+
+**🚀 Open the Workspace**: `multi-repo-workspace.code-workspace`
+- 🐳 **VPS Testing Environment** (this repository)
+- 🔧 **WSL & Docker Manager** (system management)
+- 🎨 **TUI Form Designer** (terminal UI development)
+
+**Quick Start**: File → Open Workspace from File... → `multi-repo-workspace.code-workspace`
+
 ## �🚀 **START HERE** - One Script Per Platform
 
 ### Windows Users (PowerShell)

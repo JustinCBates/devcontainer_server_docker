@@ -1,0 +1,148 @@
+{
+    "folders": [
+        {
+            "name": "🐳 VPS Testing Environment",
+            "path": "."
+        },
+        {
+            "name": "🔧 WSL & Docker Manager",
+            "path": "../wsl-and-docker-desktop-manager"
+        },
+        {
+            "name": "🎨 TUI Form Designer",
+            "path": "../TUI_Form_Designer"
+        }
+    ],
+    "settings": {
+        "python.defaultInterpreterPath": "python",
+        "python.terminal.activateEnvironment": true,
+        "files.associations": {
+            "*.py": "python",
+            "Dockerfile*": "dockerfile",
+            "docker-compose*.yml": "dockercompose",
+            "docker-compose*.yaml": "dockercompose"
+        },
+        "workbench.colorTheme": "Default Dark+",
+        "editor.fontSize": 14,
+        "terminal.integrated.defaultProfile.windows": "PowerShell",
+        "git.detectSubmodules": false,
+        "git.enableRepositoryDetection": true,
+        "scm.repositories.visible": 10
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "ms-python.debugpy",
+            "ms-vscode.vscode-docker",
+            "redhat.vscode-yaml",
+            "ms-vscode.powershell",
+            "github.vscode-github-actions",
+            "eamodio.gitlens"
+        ]
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "🚀 Interactive VPS Launcher",
+                "type": "debugpy",
+                "request": "launch",
+                "program": "${workspaceFolder}/project/advanced-launcher.py",
+                "console": "integratedTerminal",
+                "cwd": "${workspaceFolder}",
+                "justMyCode": true
+            },
+            {
+                "name": "🔍 VPS Status Check",
+                "type": "debugpy",
+                "request": "launch",
+                "program": "${workspaceFolder}/project/manage-vps.py",
+                "console": "integratedTerminal",
+                "cwd": "${workspaceFolder}",
+                "args": ["status"],
+                "justMyCode": true
+            },
+            {
+                "name": "🔧 WSL Master Script",
+                "type": "PowerShell",
+                "request": "launch",
+                "program": "${workspaceFolder}/../wsl-and-docker-desktop-manager/MASTER-REINSTALL.ps1",
+                "args": ["-Phase", "backup"],
+                "cwd": "${workspaceFolder}/../wsl-and-docker-desktop-manager"
+            },
+            {
+                "name": "🎨 TUI Form Designer",
+                "type": "debugpy",
+                "request": "launch",
+                "program": "${workspaceFolder}/../TUI_Form_Designer/src/main.py",
+                "console": "integratedTerminal",
+                "cwd": "${workspaceFolder}/../TUI_Form_Designer",
+                "justMyCode": true
+            }
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "🚀 Launch VPS Environment",
+                "type": "shell",
+                "command": "python",
+                "args": ["project/advanced-launcher.py"],
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": true,
+                    "panel": "new"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "🔧 WSL Backup Docker Data",
+                "type": "shell",
+                "command": "powershell",
+                "args": ["-File", "../wsl-and-docker-desktop-manager/BACKUP-DOCKER-DATA.ps1"],
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "panel": "new"
+                }
+            },
+            {
+                "label": "🎨 Build TUI Designer",
+                "type": "shell",
+                "command": "python",
+                "args": ["-m", "build"],
+                "options": {
+                    "cwd": "../TUI_Form_Designer"
+                },
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "panel": "new"
+                }
+            },
+            {
+                "label": "🔍 Check All Repository Status",
+                "type": "shell",
+                "command": "powershell",
+                "args": [
+                    "-Command",
+                    "Write-Host '=== VPS Testing Environment ===' -ForegroundColor Green; git status --short; Write-Host '\\n=== WSL Docker Manager ===' -ForegroundColor Green; cd ../wsl-and-docker-desktop-manager; git status --short; Write-Host '\\n=== TUI Form Designer ===' -ForegroundColor Green; cd ../TUI_Form_Designer; git status --short"
+                ],
+                "group": "test",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "panel": "new"
+                }
+            }
+        ]
+    }
+}
