@@ -1,0 +1,12 @@
+# Python requirements for VPS Testing Environment
+# This project uses only Python standard library modules
+# No additional packages need to be installed
+
+# Standard library modules used:
+# - subprocess (command execution)
+# - json (JSON parsing)
+# - argparse (command line parsing)
+# - time (delays)
+# - os (operating system interface)
+# - sys (system specific parameters)
+# - typing (type hints)

@@ -1,0 +1,54 @@
+{
+    "name": "Debian Docker Server",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "debian-server",
+    "workspaceFolder": "/home/serveruser",
+    "shutdownAction": "stopCompose",
+    
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest",
+            "dockerDashComposeVersion": "v2"
+        }
+    },
+    
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode-remote.remote-containers",
+                "ms-azuretools.vscode-docker",
+                "ms-vscode.vscode-json",
+                "redhat.vscode-yaml"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    },
+    
+    "forwardPorts": [22, 2376, 8080, 8443, 3000, 5000],
+    "portsAttributes": {
+        "22": {
+            "label": "SSH",
+            "onAutoForward": "ignore"
+        },
+        "2376": {
+            "label": "Docker API",
+            "onAutoForward": "ignore"
+        },
+        "8080": {
+            "label": "Web App HTTP"
+        },
+        "8443": {
+            "label": "Web App HTTPS"
+        }
+    },
+    
+    "mounts": [
+        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+    ],
+    
+    "postCreateCommand": "echo 'Debian Docker Server is ready for deployment testing!'",
+    
+    "remoteUser": "serveruser"
+}

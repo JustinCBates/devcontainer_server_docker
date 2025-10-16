@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debian Docker Server - Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .status {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .info {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .command-box {
+            background: #2d2d2d;
+            color: #f0f0f0;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐧 Debian Docker Server</h1>
+        
+        <div class="status">
+            <strong>✅ Server Status:</strong> Online and Ready for Deployment Testing
+        </div>
+        
+        <div class="info">
+            <h3>🚀 Quick Start</h3>
+            <p>Your containerized Debian server with Docker-in-Docker capabilities is running successfully!</p>
+            
+            <h4>Access Methods:</h4>
+            <ul>
+                <li><strong>SSH:</strong> <code>ssh serveruser@localhost -p 2222</code> (password: serveruser)</li>
+                <li><strong>Web Interface:</strong> This page on port 8081</li>
+                <li><strong>Docker API:</strong> Available on port 2376</li>
+            </ul>
+            
+            <h4>Test Container Deployment:</h4>
+            <div class="command-box">
+# SSH into the server<br>
+ssh serveruser@localhost -p 2222<br><br>
+# Run a test container<br>
+docker run -d --name test-app -p 3000:80 nginx:alpine<br><br>
+# Check running containers<br>
+docker ps<br><br>
+# View container logs<br>
+docker logs test-app
+            </div>
+            
+            <h4>Available Ports:</h4>
+            <ul>
+                <li><strong>2222:</strong> SSH Access</li>
+                <li><strong>8080:</strong> HTTP Applications</li>
+                <li><strong>8443:</strong> HTTPS Applications</li>
+                <li><strong>3000:</strong> Node.js/React Dev Servers</li>
+                <li><strong>5000:</strong> Python/Flask Applications</li>
+                <li><strong>9000:</strong> Additional Services</li>
+            </ul>
+        </div>
+        
+        <div class="info">
+            <h3>📁 Directory Structure</h3>
+            <ul>
+                <li><strong>/home/serveruser/shared:</strong> Shared files between host and container</li>
+                <li><strong>/home/serveruser/deployments:</strong> Store your deployment configurations</li>
+            </ul>
+        </div>
+        
+        <p style="text-align: center; color: #666; margin-top: 30px;">
+            <em>Debian Docker Server - Ready for Testing Server Deployments</em>
+        </p>
+    </div>
+    
+    <script>
+        // Add current timestamp
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date().toLocaleString();
+            const timeElement = document.createElement('p');
+            timeElement.innerHTML = `<strong>Page loaded:</strong> ${now}`;
+            timeElement.style.textAlign = 'center';
+            timeElement.style.color = '#666';
+            document.querySelector('.container').appendChild(timeElement);
+        });
+    </script>
+</body>
+</html>
