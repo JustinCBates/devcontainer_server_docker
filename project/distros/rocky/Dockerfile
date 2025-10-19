@@ -3,7 +3,7 @@ FROM rockylinux:9
 
 # Install EPEL repository and common VPS packages
 RUN dnf update -y && dnf install -y epel-release \
-    && dnf install -y \
+    && dnf install -y --allowerasing \
     openssh-server \
     sudo \
     curl \
@@ -21,7 +21,6 @@ RUN dnf update -y && dnf install -y epel-release \
     cronie \
     logrotate \
     firewalld \
-    fail2ban \
     python3 \
     python3-pip \
     nodejs \
