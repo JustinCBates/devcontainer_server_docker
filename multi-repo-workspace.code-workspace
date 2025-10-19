@@ -1,15 +1,15 @@
 {
     "folders": [
         {
-            "name": "🐳 VPS Testing Environment",
+            "name": "VPS Testing Environment",
             "path": "."
         },
         {
-            "name": "🔧 WSL & Docker Manager",
+            "name": "WSL & Docker Manager",
             "path": "../wsl-and-docker-desktop-manager"
         },
         {
-            "name": "🎨 TUI Form Designer",
+            "name": "TUI Form Designer",
             "path": "../TUI_Form_Designer"
         }
     ],
@@ -67,7 +67,7 @@
                 "type": "PowerShell",
                 "request": "launch",
                 "program": "${workspaceFolder}/../wsl-and-docker-desktop-manager/MASTER-REINSTALL.ps1",
-                "args": ["-Phase", "backup"],
+                "args": ["-Phase", "all"],
                 "cwd": "${workspaceFolder}/../wsl-and-docker-desktop-manager"
             },
             {
@@ -101,18 +101,7 @@
                 },
                 "problemMatcher": []
             },
-            {
-                "label": "🔧 WSL Backup Docker Data",
-                "type": "shell",
-                "command": "powershell",
-                "args": ["-File", "../wsl-and-docker-desktop-manager/BACKUP-DOCKER-DATA.ps1"],
-                "group": "build",
-                "presentation": {
-                    "echo": true,
-                    "reveal": "always",
-                    "panel": "new"
-                }
-            },
+            
             {
                 "label": "🎨 Build TUI Designer",
                 "type": "shell",
