@@ -1,0 +1,52 @@
+# VPS Testing Environment - Git Ignore File
+
+# Python Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# TUI Integration
+tui_integration/
+tui_layouts/test_*.json
+tui_layouts/temp_*
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+supervisord.log
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+# Configuration outputs
+*_config.json
+vps_config_*.json
+
+# Build artifacts
+build/
+dist/
+*.egg-info/

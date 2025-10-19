@@ -1,59 +1,51 @@
 # Workspace Repository Verification Script
 # This script verifies that all repositories are properly accessible from the workspace
 
-Write-Host "🔍 Multi-Repository Workspace Verification" -ForegroundColor Green
+Write-Information "🔍 Multi-Repository Workspace Verification" -Tags Title
 
-# Check current location
-Write-Host "`n📍 Current Location: $(Get-Location)" -ForegroundColor Yellow
+Write-Information "`n📍 Current Location: $(Get-Location)" -Tags Info
 
-# Check main repository
-Write-Host "`n🐳 VPS Testing Environment (main repo):" -ForegroundColor Cyan
-if (Test-Path ".git") {
-    Write-Host "  ✅ Git repository detected" -ForegroundColor Green
-    Write-Host "  📂 Files: $(((Get-ChildItem -File).Count)) files, $(((Get-ChildItem -Directory).Count)) directories" -ForegroundColor White
-} else {
-    Write-Host "  ❌ No git repository found" -ForegroundColor Red
-}
+function Show-RepoInfo {
+    param(
+        [string]$Path,
+        [string]$Label
+    )
 
-# Check WSL & Docker Manager
-Write-Host "`n🔧 WSL & Docker Manager:" -ForegroundColor Cyan
-if (Test-Path "../wsl-and-docker-desktop-manager") {
-    Write-Host "  ✅ Repository accessible" -ForegroundColor Green
-    $wslFiles = Get-ChildItem "../wsl-and-docker-desktop-manager" -File | Measure-Object
-    Write-Host "  📂 Files: $($wslFiles.Count) files" -ForegroundColor White
-    if (Test-Path "../wsl-and-docker-desktop-manager/.git") {
-        Write-Host "  ✅ Git repository detected" -ForegroundColor Green
+    if (Test-Path $Path) {
+        Write-Information "  ✅ $Label: accessible" -Tags Success
+        $count = (Get-ChildItem -Path $Path -File -Recurse -ErrorAction SilentlyContinue | Measure-Object).Count
+        Write-Information "    📂 Files: $count" -Tags Info
+        if (Test-Path (Join-Path $Path '.git')) {
+            Write-Information "    🔧 Git repository: present" -Tags Info
+        } else {
+            Write-Information "    � Git repository: not present" -Tags Info
+        }
+    } else {
+        Write-Warning "  ❌ $Label: not accessible"
     }
-} else {
-    Write-Host "  ❌ Repository not accessible" -ForegroundColor Red
 }
 
-# Check TUI Form Designer  
-Write-Host "`n🎨 TUI Form Designer:" -ForegroundColor Cyan
-if (Test-Path "../TUI_Form_Designer") {
-    Write-Host "  ✅ Repository accessible" -ForegroundColor Green
-    $tuiFiles = Get-ChildItem "../TUI_Form_Designer" -File | Measure-Object
-    Write-Host "  📂 Files: $($tuiFiles.Count) files" -ForegroundColor White
-    if (Test-Path "../TUI_Form_Designer/.git") {
-        Write-Host "  ✅ Git repository detected" -ForegroundColor Green
-    }
+Write-Information "`n🐳 VPS Testing Environment (main repo):" -Tags Info
+Show-RepoInfo -Path '.' -Label 'VPS Testing Environment'
+
+Write-Information "`n🔧 WSL & Docker Manager:" -Tags Info
+Show-RepoInfo -Path '..\wsl-and-docker-desktop-manager' -Label 'WSL & Docker Manager'
+
+Write-Information "`n🎨 TUI Form Designer:" -Tags Info
+Show-RepoInfo -Path '..\TUI_Form_Designer' -Label 'TUI Form Designer'
+
+Write-Information "`n🎛️ Workspace Configuration:" -Tags Info
+if (Test-Path 'multi-repo-workspace.code-workspace') {
+    Write-Information "  ✅ Workspace file found" -Tags Success
+    Write-Information "  📄 File: multi-repo-workspace.code-workspace" -Tags Info
 } else {
-    Write-Host "  ❌ Repository not accessible" -ForegroundColor Red
+    Write-Warning "  ❌ Workspace file missing"
 }
 
-# Check workspace file
-Write-Host "`n🎛️ Workspace Configuration:" -ForegroundColor Cyan
-if (Test-Path "multi-repo-workspace.code-workspace") {
-    Write-Host "  ✅ Workspace file found" -ForegroundColor Green
-    Write-Host "  📄 File: multi-repo-workspace.code-workspace" -ForegroundColor White
-} else {
-    Write-Host "  ❌ Workspace file missing" -ForegroundColor Red
-}
+Write-Information "`n🚀 To open the workspace:" -Tags Info
+Write-Information "   1. Open VS Code" -Tags Info
+Write-Information "   2. File → Open Workspace from File..." -Tags Info
+Write-Information "   3. Select: multi-repo-workspace.code-workspace" -Tags Info
+Write-Information "   4. All three repositories should appear in Explorer" -Tags Info
 
-Write-Host "`n🚀 To open the workspace:" -ForegroundColor Green
-Write-Host "   1. Open VS Code" -ForegroundColor White
-Write-Host "   2. File → Open Workspace from File..." -ForegroundColor White
-Write-Host "   3. Select: multi-repo-workspace.code-workspace" -ForegroundColor White
-Write-Host "   4. All three repositories should appear in Explorer" -ForegroundColor White
-
-Write-Host "`n✅ Verification completed!" -ForegroundColor Green
+Write-Information "`n✅ Verification completed!" -Tags Success
